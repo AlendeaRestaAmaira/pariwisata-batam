@@ -46,7 +46,91 @@
         </div>
     </div>
 
-    <!-- 2. JELAJAHI BERDASARKAN WILAYAH (Sesuai Referensi Gambar Anda) -->
+    <!-- ================= SECTION TERDEKAT (PROXIMITY) ================= -->
+    <section class="mb-16 mt-8">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-6 gap-4">
+            <div>
+                <h2 class="text-3xl font-extrabold text-slate-800 mb-2">
+                    <i class="fa-solid fa-location-crosshairs text-coral mr-2"></i>Terdekat dari Anda
+                </h2>
+                <p class="text-gray-500">Aktifkan lokasi untuk menemukan permata tersembunyi di sekitar Anda.</p>
+            </div>
+            
+            <!-- Tombol Trigger Lokasi -->
+            <button id="btn-lokasi" onclick="dapatkanLokasi()" class="bg-white border-2 border-ocean text-ocean hover:bg-ocean hover:text-white px-6 py-2.5 rounded-full font-bold transition shadow-sm flex items-center gap-2">
+                <i class="fa-solid fa-map-pin"></i> Temukan di Sekitar
+            </button>
+        </div>
+
+        <!-- State 1: Belum Ada Izin (Tampilan Awal) -->
+        <div id="lokasi-placeholder" class="bg-blue-50 border border-blue-100 rounded-2xl p-10 text-center transition-all duration-500">
+            <div class="bg-white w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm">
+                <i class="fa-solid fa-radar flex text-3xl text-ocean animate-pulse"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-700 mb-2">Belum Mendeteksi Lokasi</h3>
+            <p class="text-gray-500 max-w-md mx-auto">Klik tombol <b>"Temukan di Sekitar"</b> di atas agar kami bisa merekomendasikan destinasi dan kuliner terbaik yang hanya berjarak beberapa menit dari tempat Anda berdiri.</p>
+        </div>
+
+        <!-- State 2: Loading (Disembunyikan secara default) -->
+        <div id="lokasi-loading" class="hidden text-center py-12 transition-all duration-500">
+            <i class="fa-solid fa-circle-notch fa-spin text-4xl text-ocean mb-3"></i>
+            <p class="text-gray-500 font-medium">Sedang mencari koordinat Anda...</p>
+        </div>
+
+        <!-- State 3: Hasil (Disembunyikan, akan muncul jika diizinkan) -->
+        <div id="lokasi-hasil" class="hidden opacity-0 transition-opacity duration-1000">
+            
+            <p id="teks-koordinat" class="text-sm font-semibold text-ocean mb-4 bg-blue-50 inline-block px-4 py-1.5 rounded-full border border-blue-100">
+                <i class="fa-solid fa-check-circle mr-1"></i> Lokasi terdeteksi
+            </p>
+
+            <div class="flex gap-6 overflow-x-auto pb-6 snap-x no-scrollbar">
+                
+                <!-- Card Proximity 1 -->
+                <div class="snap-start shrink-0 w-72 sm:w-80 bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden relative">
+                    <div class="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-slate-800 text-xs font-black px-3 py-1.5 rounded-full shadow-md flex items-center gap-1 z-10">
+                        <i class="fa-solid fa-person-walking text-ocean"></i> 0.8 km
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1555899434-94d1368aa7af?q=80&w=400&auto=format&fit=crop" alt="WTB" class="w-full h-40 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg text-slate-800 mb-1">Welcome To Batam</h3>
+                        <p class="text-xs text-gray-500 mb-3">Landmark & Pusat Kuliner</p>
+                        <a href="/wisata/detail" class="block text-center bg-gray-100 hover:bg-gray-200 text-slate-700 py-2 rounded-lg text-sm font-bold transition">Lihat Rute</a>
+                    </div>
+                </div>
+
+                <!-- Card Proximity 2 -->
+                <div class="snap-start shrink-0 w-72 sm:w-80 bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden relative">
+                    <div class="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-slate-800 text-xs font-black px-3 py-1.5 rounded-full shadow-md flex items-center gap-1 z-10">
+                        <i class="fa-solid fa-car text-ocean"></i> 2.1 km
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=400&auto=format&fit=crop" alt="Cafe" class="w-full h-40 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg text-slate-800 mb-1">Anchor Cafe & Roastery</h3>
+                        <p class="text-xs text-gray-500 mb-3">Restoran / Cafe</p>
+                        <a href="/hotel/detail" class="block text-center bg-gray-100 hover:bg-gray-200 text-slate-700 py-2 rounded-lg text-sm font-bold transition">Lihat Rute</a>
+                    </div>
+                </div>
+                
+                <!-- Card Proximity 3 -->
+                <div class="snap-start shrink-0 w-72 sm:w-80 bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden relative">
+                    <div class="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-slate-800 text-xs font-black px-3 py-1.5 rounded-full shadow-md flex items-center gap-1 z-10">
+                        <i class="fa-solid fa-car text-ocean"></i> 4.5 km
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1551882547-ff40c0d509af?q=80&w=400&auto=format&fit=crop" alt="Aston" class="w-full h-40 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg text-slate-800 mb-1">Aston Batam Hotel</h3>
+                        <p class="text-xs text-gray-500 mb-3">Penginapan bintang 4</p>
+                        <a href="/hotel/detail" class="block text-center bg-gray-100 hover:bg-gray-200 text-slate-700 py-2 rounded-lg text-sm font-bold transition">Lihat Rute</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- ================= END SECTION TERDEKAT ================= -->
+
+    <!-- 2. JELAJAHI BERDASARKAN WILAYAH -->
     <section class="mt-16">
         <div class="flex justify-between items-end mb-6">
             <h2 class="text-3xl font-bold text-slate-800">Eksplorasi Wilayah</h2>
@@ -55,7 +139,6 @@
         
         <!-- Container Scroll Horizontal -->
         <div class="flex space-x-4 overflow-x-auto no-scrollbar pb-4 snap-x">
-            
             <!-- Card Nongsa -->
             <a href="/wisata?wilayah=nongsa" class="snap-start relative min-w-[160px] md:min-w-[200px] h-[240px] md:h-[280px] rounded-2xl overflow-hidden group flex-shrink-0">
                 <img src="https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b" alt="Nongsa" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition duration-500">
@@ -95,7 +178,6 @@
                     <p class="text-sm text-gray-300">45 Wisata</p>
                 </div>
             </a>
-
         </div>
     </section>
 
@@ -236,7 +318,6 @@
             <p class="text-gray-500 mt-2">Temukan jawaban untuk membantu merencanakan perjalanan Anda</p>
         </div>
         
-        <!-- Accordion menggunakan elemen bawaan HTML (details & summary) -->
         <div class="max-w-3xl mx-auto space-y-4">
             
             <!-- FAQ Item 1 -->
@@ -281,3 +362,62 @@
         </div>
     </section>
 @endsection
+
+<!-- SCRIPT UNTUK FITUR LOKASI DITAMBAHKAN DI SINI (Di luar @section('content')) -->
+@push('scripts')
+<script>
+    function dapatkanLokasi() {
+        const btn = document.getElementById('btn-lokasi');
+        const placeholder = document.getElementById('lokasi-placeholder');
+        const loading = document.getElementById('lokasi-loading');
+        const hasil = document.getElementById('lokasi-hasil');
+        const teksKoordinat = document.getElementById('teks-koordinat');
+
+        // 1. Ubah UI ke status Loading
+        btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Mendeteksi...';
+        btn.classList.add('opacity-70', 'cursor-not-allowed');
+        btn.disabled = true;
+        
+        placeholder.classList.add('hidden');
+        loading.classList.remove('hidden');
+
+        // 2. Cek apakah browser mendukung Geolocation
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                // JIKA USER MENGIZINKAN (SUCCESS)
+                function(position) {
+                    const lat = position.coords.latitude;
+                    const long = position.coords.longitude;
+                    
+                    // Hilangkan loading, tampilkan hasil
+                    loading.classList.add('hidden');
+                    hasil.classList.remove('hidden');
+                    
+                    // Efek fade-in halus
+                    setTimeout(() => {
+                        hasil.classList.remove('opacity-0');
+                        btn.innerHTML = '<i class="fa-solid fa-check"></i> Lokasi Aktif';
+                        btn.classList.remove('border-ocean', 'text-ocean');
+                        btn.classList.add('bg-green-500', 'text-white', 'border-green-500');
+                        
+                        // Tampilkan koordinat ke layar (untuk simulasi)
+                        teksKoordinat.innerHTML = `<i class="fa-solid fa-location-crosshairs mr-1"></i> Titik Anda: ${lat.toFixed(4)}, ${long.toFixed(4)}`;
+                    }, 200);
+                },
+                // JIKA USER MENOLAK / ERROR
+                function(error) {
+                    loading.classList.add('hidden');
+                    placeholder.classList.remove('hidden');
+                    btn.disabled = false;
+                    btn.classList.remove('opacity-70', 'cursor-not-allowed');
+                    btn.innerHTML = '<i class="fa-solid fa-map-pin"></i> Coba Lagi';
+                    
+                    alert("Gagal mendapatkan lokasi. Pastikan Anda memberikan izin akses lokasi pada browser Anda.");
+                }
+            );
+        } else {
+            alert("Browser Anda tidak mendukung fitur lokasi.");
+        }
+    }
+</script>
+@endpush

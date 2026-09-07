@@ -46,28 +46,51 @@
     </div>
 
     <!-- HASIL DAFTAR -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mb-16" id="list-item">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16" id="list-item">
         
         <!-- Card Hotel 1 -->
         <div class="card-item bg-white rounded-2xl shadow-lg overflow-hidden border-t-4 border-ocean flex flex-col transition-all duration-300" data-kategori="hotel" data-lokasi="nongsa" data-harga="2500000">
-            <div class="relative h-56">
+            <div class="relative h-48"> <!-- Tinggi gambar disesuaikan sedikit -->
                 <span class="absolute top-3 left-3 bg-ocean text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">Hotel / Resor</span>
                 <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=800&auto=format&fit=crop" alt="Montigo" class="w-full h-full object-cover">
             </div>
-            <div class="p-6 flex flex-col flex-grow">
-                <h3 class="text-2xl font-bold text-slate-800 mb-1">Montigo Resorts Nongsa</h3>
-                <p class="text-gray-500 text-sm mb-3"><i class="fa-solid fa-location-dot text-ocean mr-1"></i> Jl. Hang Lekir, Nongsa</p>
-                <div class="mb-6 mt-auto pt-4">
+            <div class="p-5 flex flex-col flex-grow">
+                <h3 class="text-xl font-bold text-slate-800 mb-1">Montigo Resorts</h3>
+                <p class="text-gray-500 text-sm mb-3"><i class="fa-solid fa-location-dot text-ocean mr-1"></i> Nongsa</p>
+                <div class="mb-5 mt-auto pt-4">
                     <p class="text-xs text-gray-400 uppercase tracking-wide">Mulai Dari</p>
-                    <p class="text-2xl font-black text-ocean">Rp 2.500.000 <span class="text-sm font-normal text-gray-500">/malam</span></p>
+                    <p class="text-xl font-black text-ocean">Rp 2.500.000 <span class="text-xs font-normal text-gray-500">/malam</span></p>
                 </div>
-                <div class="flex gap-3 mt-auto">
-                    <!-- LINK MENUJU HALAMAN DETAIL -->
-                    <a href="/detail-hotel" class="flex-1 text-center bg-gray-100 text-slate-700 py-3 rounded-lg font-bold hover:bg-gray-200 transition">
-                        Lihat Detail
+                <div class="flex flex-col xl:flex-row gap-2 mt-auto">
+                    <a href="/detail-hotel" class="flex-1 text-center bg-gray-100 text-slate-700 py-2 rounded-lg font-bold hover:bg-gray-200 transition text-sm">
+                        Detail
                     </a>
-                    <a href="https://www.agoda.com" target="_blank" rel="noopener noreferrer" class="flex-1 text-center bg-ocean text-white py-3 rounded-lg font-bold hover:bg-blue-700 transition shadow-md">
+                    <a href="https://www.agoda.com" target="_blank" rel="noopener noreferrer" class="flex-1 text-center bg-ocean text-white py-2 rounded-lg font-bold hover:bg-blue-700 transition shadow-md text-sm">
                         Agoda <i class="fa-solid fa-external-link-alt text-xs ml-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card Hotel 2 -->
+        <div class="card-item bg-white rounded-2xl shadow-lg overflow-hidden border-t-4 border-ocean flex flex-col transition-all duration-300" data-kategori="hotel" data-lokasi="batam-kota" data-harga="650000">
+            <div class="relative h-48">
+                <span class="absolute top-3 left-3 bg-ocean text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">Hotel</span>
+                <img src="https://pix10.agoda.net/hotelImages/33076954/-1/53c8c90e2cee730450a7054ed8a15fd7.jpg?va=1&ce=0&s=1024x768" alt="Aston" class="w-full h-full object-cover">
+            </div>
+            <div class="p-5 flex flex-col flex-grow">
+                <h3 class="text-xl font-bold text-slate-800 mb-1">Aston Batam Hotel</h3>
+                <p class="text-gray-500 text-sm mb-3"><i class="fa-solid fa-location-dot text-ocean mr-1"></i> Pelita, Batam Kota</p>
+                <div class="mb-5 mt-auto pt-4">
+                    <p class="text-xs text-gray-400 uppercase tracking-wide">Mulai Dari</p>
+                    <p class="text-xl font-black text-ocean">Rp 650.000 <span class="text-xs font-normal text-gray-500">/malam</span></p>
+                </div>
+                <div class="flex flex-col xl:flex-row gap-2 mt-auto">
+                    <a href="/detail-hotel" class="flex-1 text-center bg-gray-100 text-slate-700 py-2 rounded-lg font-bold hover:bg-gray-200 transition text-sm">
+                        Detail
+                    </a>
+                    <a href="https://www.traveloka.com/id-id/hotel" target="_blank" rel="noopener noreferrer" class="flex-1 text-center bg-blue-500 text-white py-2 rounded-lg font-bold hover:bg-blue-600 transition shadow-md text-sm">
+                        Traveloka <i class="fa-solid fa-external-link-alt text-xs ml-1"></i>
                     </a>
                 </div>
             </div>
@@ -75,23 +98,22 @@
 
         <!-- Card Resto 1 -->
         <div class="card-item bg-white rounded-2xl shadow-lg overflow-hidden border-t-4 border-coral flex flex-col transition-all duration-300" data-kategori="resto" data-lokasi="batu-ampar" data-harga="150000">
-            <div class="relative h-56">
+            <div class="relative h-48">
                 <span class="absolute top-3 left-3 bg-coral text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">Restoran</span>
                 <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=800&auto=format&fit=crop" alt="Seafood" class="w-full h-full object-cover">
             </div>
-            <div class="p-6 flex flex-col flex-grow">
-                <h3 class="text-2xl font-bold text-slate-800 mb-1">Wey Wey Seafood</h3>
+            <div class="p-5 flex flex-col flex-grow">
+                <h3 class="text-xl font-bold text-slate-800 mb-1">Wey Wey Seafood</h3>
                 <p class="text-gray-500 text-sm mb-3"><i class="fa-solid fa-location-dot text-coral mr-1"></i> Harbour Bay, Batu Ampar</p>
-                <div class="mb-6 mt-auto pt-4">
+                <div class="mb-5 mt-auto pt-4">
                     <p class="text-xs text-gray-400 uppercase tracking-wide">Estimasi Harga</p>
-                    <p class="text-2xl font-black text-coral">Rp 150.000 <span class="text-sm font-normal text-gray-500">- 300k</span></p>
+                    <p class="text-xl font-black text-coral">Rp 150.000 <span class="text-xs font-normal text-gray-500">- 300k</span></p>
                 </div>
-                <div class="flex gap-3 mt-auto">
-                    <!-- LINK MENUJU HALAMAN DETAIL -->
-                    <a href="/detail-hotel" class="flex-1 text-center bg-gray-100 text-slate-700 py-3 rounded-lg font-bold hover:bg-gray-200 transition">
-                        Lihat Detail
+                <div class="flex flex-col xl:flex-row gap-2 mt-auto">
+                    <a href="/detail-hotel" class="flex-1 text-center bg-gray-100 text-slate-700 py-2 rounded-lg font-bold hover:bg-gray-200 transition text-sm">
+                        Detail
                     </a>
-                    <a href="https://www.google.com/maps" target="_blank" rel="noopener noreferrer" class="flex-1 text-center bg-coral text-white py-3 rounded-lg font-bold hover:bg-red-600 transition shadow-md">
+                    <a href="https://www.google.com/maps" target="_blank" rel="noopener noreferrer" class="flex-1 text-center bg-coral text-white py-2 rounded-lg font-bold hover:bg-red-600 transition shadow-md text-sm">
                         Maps <i class="fa-solid fa-external-link-alt text-xs ml-1"></i>
                     </a>
                 </div>
