@@ -30,10 +30,10 @@
     <!-- NAVBAR -->
     <nav class="bg-ocean text-white p-4 shadow-md sticky top-0 z-50">
         <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-2xl font-bold"><i class="fa-solid fa-anchor mr-2"></i>Jelajah Batam</h1>
+            <h1 class="text-2xl font-bold"><i class="fa-solid fa-anchor mr-2"></i>BatamPass</h1>
             
+            <!-- Menu Desktop (Sembunyi di HP, Tampil di Layar Menengah ke atas) -->
             <div class="hidden md:flex items-center space-x-6 font-semibold">
-                
                 <!-- Link Menu Utama -->
                 <a href="/" class="{{ request()->is('/') ? 'text-yellow-300' : 'hover:text-sand' }}">Beranda</a>
                 <a href="/wisata" class="{{ request()->is('wisata') ? 'text-yellow-300' : 'hover:text-sand' }}">Destinasi</a>
@@ -61,7 +61,30 @@
                         </a>
                     </div>
                 </div>
+            </div>
 
+            <!-- Tombol Hamburger untuk Layar HP -->
+            <button onclick="toggleMobileMenu()" class="md:hidden text-2xl text-white hover:text-yellow-300 focus:outline-none transition">
+                <i class="fa-solid fa-bars" id="icon-hamburger"></i>
+            </button>
+        </div>
+
+        <!-- Menu Mobile (Tampil saat tombol hamburger diklik) -->
+        <div id="mobile-menu" class="hidden md:hidden mt-4 pt-4 border-t border-blue-400 space-y-4 font-semibold pb-2">
+            <a href="/" class="block {{ request()->is('/') ? 'text-yellow-300' : 'hover:text-yellow-300' }}">Beranda</a>
+            <a href="/wisata" class="block {{ request()->is('wisata') ? 'text-yellow-300' : 'hover:text-yellow-300' }}">Destinasi</a>
+            <a href="/tiket" class="block {{ request()->is('tiket') ? 'text-yellow-300' : 'hover:text-yellow-300' }}">Tiket</a>
+            <a href="/hotel" class="block {{ request()->is('hotel') ? 'text-yellow-300' : 'hover:text-yellow-300' }}">Hotel & Resto</a>
+            <a href="/bundle" class="block {{ request()->is('bundle') ? 'text-yellow-300' : 'hover:text-yellow-300' }}">Bundling Promo</a>
+            <a href="/games" class="block {{ request()->is('games') ? 'text-yellow-300' : 'hover:text-yellow-300' }}">Mini Games</a>
+            
+            <div class="h-px w-full bg-blue-400 my-2"></div>
+            
+            <!-- Pengaturan Bahasa untuk Mobile -->
+            <div class="flex gap-4">
+                <span class="text-blue-200">Bahasa:</span>
+                <a href="#" class="hover:text-yellow-300">🇮🇩 ID</a>
+                <a href="#" class="hover:text-yellow-300">🇬🇧 EN</a>
             </div>
         </div>
     </nav>
@@ -85,7 +108,7 @@
             <div class="rounded-2xl overflow-hidden shadow-inner border-2 border-gray-100 bg-gray-50 flex justify-center items-center">
                 
                 <!-- Ganti nama file 'peta-wisata.jpg' sesuai dengan nama foto Anda di folder public/images -->
-                <img src="https://blue.kumparan.com/image/upload/fl_progressive,fl_lossy,c_fill,f_auto,q_auto:best,w_640/v1634025439/01gxpsec95jf9jz3ep6xr65d70.jpg" 
+                <img src="{{ asset('assets/images/wisata-peta.jpg') }}" 
                      alt="Peta Wisata Batam" 
                      class="w-full max-w-4xl h-auto object-contain hover:scale-105 transition-transform duration-700 cursor-pointer"
                      loading="lazy"
@@ -140,10 +163,29 @@
 
     </div>
     <!-- ================= END BAGIAN FAVORIT ================= -->
+    
     <!-- Tempat untuk JavaScript spesifik per halaman -->
     @stack('scripts')
 
     <script>
+        // Fungsi Buka/Tutup Menu Navigasi di Mobile
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('icon-hamburger');
+            
+            // Munculkan/Sembunyikan menu
+            menu.classList.toggle('hidden');
+            
+            // Ubah ikon dari 3 garis (bars) menjadi silang (xmark)
+            if(menu.classList.contains('hidden')) {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            }
+        }
+
         // Fungsi untuk Membuka/Menutup Sidebar
         function toggleFavoriteSidebar() {
             const sidebar = document.getElementById('fav-sidebar');
